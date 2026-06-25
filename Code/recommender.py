@@ -25,7 +25,7 @@ def build_course_matrix(df_courses):
     return vectors_courses, vocabulary
 
 
-def calculate_recommendations(student_name ,student_marks, df_courses, vectors_courses, vocabulary):
+def calculate_recommendations(student_marks, df_courses, vectors_courses, vocabulary):
     student_vector = np.zeros(len(vocabulary))
 
     for course_name, mark in student_marks.items():
@@ -34,9 +34,7 @@ def calculate_recommendations(student_name ,student_marks, df_courses, vectors_c
             idx = course_index[0]
             vector = vectors_courses[idx]
             student_vector += vector * (mark ** 2)
-    print(' ')
-    print(f'Recommendations for student : {student_name}')
-    print(' ')
+
     recommendations = []
     for i, course_vector in enumerate(vectors_courses):
         course_name = df_courses.iloc[i]['Course']
@@ -55,6 +53,4 @@ def calculate_recommendations(student_name ,student_marks, df_courses, vectors_c
         recommendations.append([course_name, similarity])
 
     recommendations.sort(key=lambda x: x[1], reverse=True)
-    for course_name, similarity in recommendations[:5]:
-        print(f"{course_name} similarity: {similarity:.3f}")
-    print('-'*50)
+    return recommendations
