@@ -32,14 +32,17 @@ def calculate_recommendations(student_name ,student_marks, df_courses, vectors_c
         course_index = df_courses[df_courses['Course'] == course_name].index
         if not course_index.empty:
             idx = course_index[0]
-
             vector = vectors_courses[idx]
-
             student_vector += vector * (mark ** 2)
-
+    print(' ')
     print(f'Recommendations for student : {student_name}')
     print(' ')
+    recommendations = []
     for i, course_vector in enumerate(vectors_courses):
+        course_name = df_courses.iloc[i]['Course']
+
+        if course_name in student_marks:
+            continue
 
         dot_product = np.dot(course_vector, student_vector)
         norm_course = np.linalg.norm(course_vector)
@@ -49,4 +52,9 @@ def calculate_recommendations(student_name ,student_marks, df_courses, vectors_c
         else: similarity = dot_product / (norm_course * norm_student)
 
         course_name = df_courses.iloc[i]['Course']
-        print(f"{course_name} similarity: {similarity:.4f}")
+        recommendations.append([course_name, similarity])
+
+    recommendations.sort(key=lambda x: x[1], reverse=True)
+    for course_name, similarity in recommendations[:5]:
+        print(f"{course_name} similarity: {similarity:.3f}")
+    print('-'*50)
