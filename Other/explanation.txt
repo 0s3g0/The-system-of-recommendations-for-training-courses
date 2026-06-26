@@ -1,0 +1,31 @@
+Примеры студентов и объяснение выбора:
+
+Maria Ivanova
+Сильные стороны: Introduction to Programming (5) и Databases (5).
+Слабые: Math Analysis (3).
+
+Результат системы:
+Data Science Fundamentals similarity: 0.2480
+Web Development with Python similarity: 0.2204
+Machine Learning similarity: 0.2025
+Computer Vision similarity: 0.1909
+Artificial Intelligence similarity: 0.1547
+
+Почему это верно: Для веб-разработки важны навыки программирования и проектирования баз данных (CRUD-операции).
+То же самое касается работы с данными. Но более сложные математические элективы  вроде AI или Machine Learning
+у Марии получили меньший приоритет.
+
+
+Anna Petrova
+Сильные стороны: Linear Algebra (5) и Mathematical Analysis (5).
+Слабые: Introduction to Programming (3) и Databases (3)
+
+Результат системы:
+Machine Learning similarity: 0.2036
+Computer Vision similarity: 0.1891
+Data Science Fundamentals similarity: 0.1822
+Web Development with Python similarity: 0.1800
+Artificial Intelligence similarity: 0.1319
+
+Почему это верно: Веб-разработка ушла вниз, уступив место математическим дисциплинам (ML и CV),
+которые требуют мощного понимания векторов, матриц и математического анализа.
